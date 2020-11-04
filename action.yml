@@ -1,0 +1,20 @@
+name: 'Get pubspec package version'
+description: 'Get the package version of a pubspec.yaml file'
+branding:
+  color: 'blue'
+  icon: 'tag'
+inputs:
+  path:
+    required: false
+    default: '.'
+    description: 'Path to the directory containing the pubspec.yaml file (not the path to the file itself)'
+outputs:
+  version:
+    description: 'Version number from the pubspec.yaml file with v added as a prefix'
+  version-without-v
+    description: 'Version number from the pubspec.yaml file without v added as a prefix'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
